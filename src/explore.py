@@ -55,8 +55,18 @@ transactions[0]
 
 # Association Rules
 rules = apriori(transactions, min_support = 0.00030, min_confidence = 0.05, min_lift = 3, min_length = 2, target = "rules")
+association_results = list(rules)
 
+for item in association_results:
+    pair = item[0] 
+    items = [x for x in pair]
+    print("Rule: " + items[0] + " -> " + items[1])
 
+    print("Support: " + str(item[1]))
+
+    print("Confidence: " + str(item[2][0][2]))
+    print("Lift: " + str(item[2][0][3]))
+    print("=====================================")
 
 def support(var, df):
     """
