@@ -7,11 +7,9 @@ Data comes from https://github.com/shelfengine/interview.
 ## Get Started
 
 ```
-
 python -m venv .venv
 python -m pip install -r requirements.txt
 # python -m pip freeze > requirements.txt
-
 ```
 
 ## Project Organization
