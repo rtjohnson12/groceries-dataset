@@ -1,21 +1,28 @@
 
-#%%
+import click
+import logging
+import requests
 import pandas as pd
-import geopandas as gpd
-import matplotlib as plt
+import json
+from pathlib import Path
 
-#%%
-parks = gpd.read_file("../../data/raw/Park Lands - Recreation and Parks Department.geojson")
-parks.loc[:, ['x', 'y']] = parks.loc[:, ['x', 'y']].apply(lambda x: x.astype('double'))
-parks = parks[(parks['x'] < -122.0)]
+@click.command()
+@click.argument('input_filepath', type=click.Path(exists=True))
+@click.argument('output_filepath', type=click.Path())
+def main(input_filepath, output_filepath):
+    """ Runs data processing scripts to turn raw data from (../raw) into
+        cleaned data ready to be analyzed (saved in ../processed).
+    """
+    logger = logging.getLogger(__name__)
+    logger.info('making model features from processed data')
 
-#%%
-trees = pd.read_csv("../../data/raw/Street_Tree_List.csv")
-trees = gpd.GeoDataFrame(trees, geometry = gpd.points_from_xy(trees.Longitude, trees.Latitude))
-trees = trees[(trees['Latitude'] > 37.65) & (trees['Latitude'] < 40)]
+    print("I built some features from ", input_filepath, " to ", output_filepath)
 
-#%%
-ax = parks.plot(color = "white", edgecolor = "black")
-trees.head(100).plot(ax = ax, color = "green")
+if __name__ == '__main__':
+    log_fmt = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    logging.basicConfig(level=logging.INFO, format=log_fmt)
 
-# %%
+    # not used in this stub but often useful for finding various files
+    project_dir = Path(__file__).resolve().parents[2]
+
+    main()
