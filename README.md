@@ -5,7 +5,7 @@ Data comes from https://github.com/shelfengine/interview.
 
 
 
-## Get Started
+## Setup
 
 ```
 # Create virtual environment

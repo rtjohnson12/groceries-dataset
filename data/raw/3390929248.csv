@@ -1,0 +1,43 @@
+CategoryId,CategoryName,RetailerId,RetailerName
+0,Bowl,bee9891f-628c-467c-8292-008b938bbc34,Retailer A
+1,Packaged Meals,bee9891f-628c-467c-8292-008b938bbc34,Retailer A
+1,Packaged Meals,46d64632-2c73-4dbf-a3b3-edff547300f0,Retailer C
+2,Pinwheel,bee9891f-628c-467c-8292-008b938bbc34,Retailer A
+2,Pinwheel,c924af2a-05f7-4b68-93b4-1e1b3c3cc9da,Retailer B
+2,Pinwheel,46d64632-2c73-4dbf-a3b3-edff547300f0,Retailer C
+3,Quiche,bee9891f-628c-467c-8292-008b938bbc34,Retailer A
+4,Salad,bee9891f-628c-467c-8292-008b938bbc34,Retailer A
+4,Salad,c924af2a-05f7-4b68-93b4-1e1b3c3cc9da,Retailer B
+4,Salad,46d64632-2c73-4dbf-a3b3-edff547300f0,Retailer C
+5,Sandwich,bee9891f-628c-467c-8292-008b938bbc34,Retailer A
+5,Sandwich,c924af2a-05f7-4b68-93b4-1e1b3c3cc9da,Retailer B
+5,Sandwich,46d64632-2c73-4dbf-a3b3-edff547300f0,Retailer C
+6,Snack,bee9891f-628c-467c-8292-008b938bbc34,Retailer A
+6,Snack,c924af2a-05f7-4b68-93b4-1e1b3c3cc9da,Retailer B
+6,Snack,46d64632-2c73-4dbf-a3b3-edff547300f0,Retailer C
+7,Wet Salad,bee9891f-628c-467c-8292-008b938bbc34,Retailer A
+7,Wet Salad,c924af2a-05f7-4b68-93b4-1e1b3c3cc9da,Retailer B
+8,Wrap,bee9891f-628c-467c-8292-008b938bbc34,Retailer A
+8,Wrap,c924af2a-05f7-4b68-93b4-1e1b3c3cc9da,Retailer B
+8,Wrap,46d64632-2c73-4dbf-a3b3-edff547300f0,Retailer C
+9,Dip,c924af2a-05f7-4b68-93b4-1e1b3c3cc9da,Retailer B
+9,Dip,46d64632-2c73-4dbf-a3b3-edff547300f0,Retailer C
+10,Fruit,c924af2a-05f7-4b68-93b4-1e1b3c3cc9da,Retailer B
+10,Fruit,46d64632-2c73-4dbf-a3b3-edff547300f0,Retailer C
+11,Fruit Tray,c924af2a-05f7-4b68-93b4-1e1b3c3cc9da,Retailer B
+11,Fruit Tray,46d64632-2c73-4dbf-a3b3-edff547300f0,Retailer C
+12,Meal Kit,c924af2a-05f7-4b68-93b4-1e1b3c3cc9da,Retailer B
+13,Platter,c924af2a-05f7-4b68-93b4-1e1b3c3cc9da,Retailer B
+13,Platter,46d64632-2c73-4dbf-a3b3-edff547300f0,Retailer C
+14,Vegetable Tray,c924af2a-05f7-4b68-93b4-1e1b3c3cc9da,Retailer B
+14,Vegetable Tray,46d64632-2c73-4dbf-a3b3-edff547300f0,Retailer C
+15,Vegetables,c924af2a-05f7-4b68-93b4-1e1b3c3cc9da,Retailer B
+15,Vegetables,46d64632-2c73-4dbf-a3b3-edff547300f0,Retailer C
+16,Cut Fruit,46d64632-2c73-4dbf-a3b3-edff547300f0,Retailer C
+17,Cut Vegetables,46d64632-2c73-4dbf-a3b3-edff547300f0,Retailer C
+18,Dips,46d64632-2c73-4dbf-a3b3-edff547300f0,Retailer C
+19,Individual Snack Tray,46d64632-2c73-4dbf-a3b3-edff547300f0,Retailer C
+20,Parfait,46d64632-2c73-4dbf-a3b3-edff547300f0,Retailer C
+21,Sandwiches,46d64632-2c73-4dbf-a3b3-edff547300f0,Retailer C
+22,Snacks,46d64632-2c73-4dbf-a3b3-edff547300f0,Retailer C
+23,Vegetable Trays,46d64632-2c73-4dbf-a3b3-edff547300f0,Retailer C
