@@ -5,6 +5,7 @@ import requests
 import pandas as pd
 import json
 from pathlib import Path
+from apyori import apriori
 
 @click.command()
 @click.argument('input_filepath', type=click.Path(exists=True))

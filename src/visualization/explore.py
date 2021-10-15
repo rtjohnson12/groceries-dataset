@@ -14,7 +14,8 @@ def main():
     logger = logging.getLogger(__name__)
     logger.info('making final data set from raw data')
 
-    print("Hello main")
+    
+
 
 def remove_outliers():
     pass

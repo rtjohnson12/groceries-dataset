@@ -1,15 +1,24 @@
 
 # Exploring Groceries Data
 
-
 Data comes from https://github.com/shelfengine/interview.
+
+
 
 ## Get Started
 
 ```
+# Create virtual environment
 python -m venv .venv
+
+# Windows
+# .venv\Scripts\activate.bat
+
+# Unix or MacOS
+# source .venv/bin/activate
+
+# Install dependencies
 python -m pip install -r requirements.txt
-# python -m pip freeze > requirements.txt
 ```
 
 ## Project Organization
@@ -22,8 +31,6 @@ python -m pip install -r requirements.txt
     │   ├── interim        <- Intermediate data that has been transformed.
     │   ├── processed      <- The final, canonical data sets for modeling.
     │   └── raw            <- The original, immutable data dump.
-    │
-    ├── docs               <- A default Sphinx project; see sphinx-doc.org for details
     │
     ├── models             <- Trained and serialized models, model predictions, or model summaries
     │
@@ -43,7 +50,7 @@ python -m pip install -r requirements.txt
     ├── src                <- Source code for use in this project.
     │   ├── __init__.py    <- Makes src a Python module
     │   │
-    │   ├── data           <- Scripts to download or generate data
+    │   ├── data           <- Scripts to process data
     │   │   └── make_dataset.py
     │   │
     │   ├── features       <- Scripts to turn raw data into features for modeling
@@ -59,5 +66,5 @@ python -m pip install -r requirements.txt
     │
     └── tox.ini            <- tox file with settings for running tox; see tox.readthedocs.io
 
-
 --------
+
