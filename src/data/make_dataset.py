@@ -25,18 +25,20 @@ def main(sales_filepath, lookup_filepath):
 
     logger.debug('merging sales and lookup')
     merged_df = pd.merge(sales, lookup, how = 'left', on = ['CategoryId', 'RetailerId'])
-
+    pdb.set_trace()
     logger.debug('computing and writing transactions data')
     all_products, transactions = summarize_transactions(merged_df)
     with open("data/interim/transactions.pickle", "wb") as f: pickle.dump(transactions, f)
 
+    logger.debug('writing cleaned data frame')
+    merged_df.to_csv('data/interim/clean_data.csv')
     
-
 def get_sales(file_name):
     df = pd.read_csv(file_name, parse_dates = ['DeliveryDate'])
     df['RetailerId'] = df['RetailerId'].str.upper()
 
     # might be missing values in `Sold`, impute by group
+    # intestestingly, all of the missing values occur on March 21st..
     df['Sold'] = df.groupby(['CategoryId', 'RetailerId'])['Sold'].ffill()
 
     return df
@@ -64,7 +66,6 @@ def summarize_transactions(df):
     transactions = temp.groupby(['RetailerName', 'DeliveryDate'])['CategoryName'].apply(list).groupby(level = 0).apply(list)
 
     return all_products, transactions
-
 
 if __name__ == '__main__':
     log_fmt = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
