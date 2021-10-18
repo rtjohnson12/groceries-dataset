@@ -37,6 +37,9 @@ def get_sales(file_name):
     df = pd.read_csv(file_name, parse_dates = ['DeliveryDate'])
     df['RetailerId'] = df['RetailerId'].str.upper()
 
+    # add DoW categorical variable from `DeliveryDate`
+    df['DoW'] = pd.Categorical(df['DeliveryDate'].dt.day_name(), categories = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'], ordered = True)
+
     # might be missing values in `Sold`, impute by group
     # intestestingly, all of the missing values occur on March 21st..
     df['Sold'] = df.groupby(['CategoryId', 'RetailerId'])['Sold'].ffill()
