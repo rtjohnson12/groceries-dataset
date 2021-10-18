@@ -33,7 +33,6 @@ python -m pip install -r requirements.txt
     │                         the creator's initials, and a short `-` delimited description, e.g.
     │                         `1.0-jqp-initial-data-exploration`.
     │
-    │
     ├── reports            <- Generated analysis as HTML, PDF, LaTeX, etc.
     │   └── figures        <- Generated graphics and figures to be used in reporting
     │
@@ -47,13 +46,9 @@ python -m pip install -r requirements.txt
         ├── data           <- Scripts to process data
         │   └── make_dataset.py
         │
-        ├── features       <- Scripts to turn raw data into features for modeling
-        │   └── build_features.py
-        │
         ├── models         <- Scripts to train models and then use trained models to make
         │   │                 predictions
-        │   ├── predict_model.py
-        │   └── train_model.py
+        │   └── model.py
         │
         └── visualization  <- Scripts to create exploratory and results oriented visualizations
             └── visualize.py
@@ -216,7 +211,7 @@ Without any customer segmentation, it is difficult to tie together different cat
 
 * Integrate data processing pipeline with database
 
-At the moment, the sales data is ingested via `.csv` files. In the future, I would like to integrate the pre-processing pipeline with a data lake. I'm interested in learning more about the update schedule of customer data, e.g. how frequently are our transaction databases being updated? Depending on the answer, how quickly can we adapt to surges in demand (as might be the case in for categories in Cluster 1 above)?
+At the moment, the sales data is ingested via `.csv` files. In the future, I would like to integrate the pre-processing pipeline with a data lake. I'm also interested in learning more about the update schedule of customer data, e.g. how frequently are our transaction databases being updated? Depending on the answer, how quickly can we adapt to surges in demand (as might be the case in for categories in Cluster 1 above)?
 
 * Develop simple time series models
 
