@@ -1,55 +1,29 @@
 # -*- coding: utf-8 -*-
 import logging
-import requests
 import pandas as pd
-import json
 from pathlib import Path
-from apyori import apriori
+import pdb
+import matplotlib.pyplot as plt
+import plotly.express as px
+import kaleido
 # from dotenv import find_dotenv, load_dotenv
 
 def main():
-    """ Runs data processing scripts to turn raw data from (../raw) into
-        cleaned data ready to be analyzed (saved in ../processed).
+    """ Run visualization scripts
     """
     logger = logging.getLogger(__name__)
-    logger.info('making final data set from raw data')
-
     
-
-
-def remove_outliers():
-    pass
-
-def impute_missing():
-    pass
+    logger.info('loading cleaned data')
+    merged_df = pd.read_csv('data/interim/clean_data.csv', parse_dates = ['DeliveryDate'])
+    merged_df['DoW'] = pd.Categorical(merged_df['DeliveryDate'].dt.day_name(), categories = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'], ordered = True)
+    
+    logger.info('generating `data/processed/sales_by_retailer.png`')
+    # plot_data = merged_df.groupby(['RetailerName', 'CategoryName', 'DoW']).agg({'Sold': 'mean'}).reset_index()
+    fig = px.box(merged_df, x = 'DoW', y = 'Sold', color = 'RetailerName', template = 'plotly_white', title = 'Distribution of Sales by Retailer')
+    fig.write_image('data/processed/sales_by_retailer.png')
+    # fig.show()
 
 if __name__ == '__main__':
     log_fmt = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
     logging.basicConfig(level=logging.INFO, format=log_fmt)
-
-    # not used in this stub but often useful for finding various files
-    project_dir = Path(__file__).resolve().parents[2]
-
     main()
-
-def support(var, df):
-    """
-    Calculate support for item, i.e. how popular an item is by, as measured by the proportion of transactions in which an item appears
-    Examples
-        support(['candy', 'whole milk'], df)
-    """
-    return len(df[df.itemDescription.isin(var)])/len(df)
-
-def confidence(X, Y, df):
-    """
-    Calculate confidence for item {X -> Y}, i.e. how popular an item is by, as measured by the proportion of transactions in which X appears where Y also appears
-    Examples
-        confidence(['candy'], ['whole milk'], df)
-    """
-    return len(df[df.itemDescription.isin([X, Y])])/len(df[df.itemDescription.isin(Y)])
-
-
-def lift(X, Y, df):
-    """ How likely item Y is purchased when item X is purchased while controlling for how popular item Y is."""
-
-    return confidence(X, Y, df)/support(Y, df)

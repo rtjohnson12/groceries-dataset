@@ -2,8 +2,8 @@
 import click
 import logging
 import pandas as pd
+from apyori import apriori
 from pathlib import Path
-import pdb
 import pickle
 
 # from dotenv import find_dotenv, load_dotenv
@@ -25,7 +25,7 @@ def main(sales_filepath, lookup_filepath):
 
     logger.debug('merging sales and lookup')
     merged_df = pd.merge(sales, lookup, how = 'left', on = ['CategoryId', 'RetailerId'])
-    pdb.set_trace()
+
     logger.debug('computing and writing transactions data')
     all_products, transactions = summarize_transactions(merged_df)
     with open("data/interim/transactions.pickle", "wb") as f: pickle.dump(transactions, f)
@@ -66,6 +66,39 @@ def summarize_transactions(df):
     transactions = temp.groupby(['RetailerName', 'DeliveryDate'])['CategoryName'].apply(list).groupby(level = 0).apply(list)
 
     return all_products, transactions
+
+def run_apriori(transactions, retailer_index = 0):
+
+    results = list(apriori(transactions[retailer_index], min_length = 2))
+
+    for item in results:
+        pair = item[0]
+        items = [x for x in pair]
+        print("Rule: " + items[0] + " -> " + items[1])
+        print("Support: " + str(item[1]))
+        print("Confidence: " + str(item[2][0][2]))
+        print("Lift: " + str(item[2][0][3]))
+
+    temp = [['beer', 'nuts'], ['beer', 'cheese']]
+    results = list(apriori(temp))
+
+    return results
+
+def support(var, df):
+    """
+    Calculate support for item, i.e. how popular an item is by, as measured by the proportion of transactions in which an item appears
+    """
+    return len(df[df.itemDescription.isin(var)])/len(df)
+
+def confidence(X, Y, df):
+    """
+    Calculate confidence for item {X -> Y}, i.e. how popular an item is by, as measured by the proportion of transactions in which X appears where Y also appears
+    """
+    return len(df[df.itemDescription.isin([X, Y])])/len(df[df.itemDescription.isin(Y)])
+
+def lift(X, Y, df):
+    """ How likely item Y is purchased when item X is purchased while controlling for how popular item Y is."""
+    return confidence(X, Y, df)/support(Y, df)
 
 if __name__ == '__main__':
     log_fmt = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'

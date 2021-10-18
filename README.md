@@ -104,7 +104,7 @@ results = list(apriori(transactions))
 In this example, the list elements correspond to individual "transactions". Unfortunately, there is no customer segmentation in the sales data provided. Without it, it is difficult to tie together individual purchases.
 
 ```
-(Pdb) merged_df
+>>> merged_df
     DeliveryDate  WeekNumber  CategoryId                            RetailerId  Sold     CategoryName RetailerName
 0     2021-03-01           9           0  BEE9891F-628C-467C-8292-008B938BBC34   0.0             Bowl   Retailer A
 1     2021-03-02           9           0  BEE9891F-628C-467C-8292-008B938BBC34   0.0             Bowl   Retailer A
