@@ -1,8 +1,6 @@
 
 # Exploring Groceries Data
 
-Data comes from https://github.com/shelfengine/interview.
-
 ## Setup
 
 ```
